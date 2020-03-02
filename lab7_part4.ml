@@ -66,21 +66,21 @@ module Stack : STACK =
   struct
     exception EmptyStack
 
-    type 'a stack = 'a      (* replace this with the correct
+    type 'a stack = 'a list     (* replace this with the correct
                                implementation type *)
 
     (* empty -- An empty stack *)
-    let empty : 'a stack = [] ;;
+    let empty : 'a stack = []
 
     (* push i s -- Adds an element i to the top of stack s *)
-    let push (i : 'a) (s : 'a stack) : 'a stack = i :: s ;;
+    let push (i : 'a) (s : 'a stack) : 'a stack = i :: s
 
     (* pop_helper s -- Returns a pair of the top element of the
        stack and a stack containing the remaining elements *)
     let pop_helper (s : 'a stack) : 'a * 'a stack =
       match s with
       |[] -> raise EmptyStack
-      | h :: t -> (h, t) ;;
+      | h :: t -> (h, t)
 
     (* top s -- Returns the value of the topmost element on stack s,
        raising the EmptyStack exception if there is no element to be
