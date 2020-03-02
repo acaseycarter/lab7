@@ -169,7 +169,12 @@ list`, even though that's the type you used in your implementation.
 
 module type INT_STACK =
   sig
-    (* ... your specification of the signature goes here ... *)
+    exception EmptyStack
+    type stack
+    val empty : stack
+    val push : int -> stack -> stack
+    val top : stack -> int
+    val pop : stack -> stack
   end ;;
 
 (* Now, we'll apply the `INT_STACK` interface to the `IntListStack` to
@@ -189,4 +194,8 @@ perform list operations directly on it, which means the stack
 preserves its abstraction barrier.
 ......................................................................*)
 
-let safe_stack () = failwith "not implemented" ;;
+let safe_stack () = StafeIntListStack.stack
+  let open SafeIntListStack in
+  empty
+  |> push 5
+  |> push 1 ;;
