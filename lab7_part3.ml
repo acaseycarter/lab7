@@ -194,7 +194,7 @@ perform list operations directly on it, which means the stack
 preserves its abstraction barrier.
 ......................................................................*)
 
-let safe_stack () : StafeIntListStack.stack =
+let safe_stack () : SafeIntListStack.stack =
   let open SafeIntListStack in
   empty
   |> push 5
